@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import RevistaContext from './../../../context/Revista/RevistaContext'
 
+
 import {useParams} from 'react-router-dom'
 
 export default function Single() {
