@@ -1,16 +1,17 @@
 import React, { useEffect, useContext } from "react";
 import RevistaContext from "./../../context/Revista/RevistaContext";
-import { Link } from "react-router-dom";
-export default function Revistas() {
+import { Link, useNavigate } from "react-router-dom";
+export default function Revistas(props) {
   // ESTADO GLOBAL
   const ctx = useContext(RevistaContext);
 
   const { revistas, hola, changeText, getRevistas } = ctx;
+  let navigate = useNavigate();
 
   useEffect(() => {
     getRevistas();
   }, []);
-  //console.log(revistas);
+
   //console.log(ctx);
 
   return (
@@ -44,8 +45,8 @@ export default function Revistas() {
                 />
               </div>
               <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
-                <h3>{element.nombre}</h3>
-              
+                <p className="mt-1 text-lg font-medium text-gray-900">{element.nombre}</p>
+                <h3 className="mt-4 text-sm text-gray-700">{`Vistas ${element.views}`}</h3>
               </div>
           
             </Link>

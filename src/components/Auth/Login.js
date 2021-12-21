@@ -1,9 +1,46 @@
 // ./client/src/Auth/Login.js
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import { Link } from 'react-router-dom'
+import UserContext from '../../context/User/UserContext'
 
 
 export default function Login() {
+
+  const ctx = useContext(UserContext)
+
+  const {
+    loginUser
+  } = ctx
+
+  // 1. ESTADO LOCAL
+  const [logUser, setLogUser] = useState({
+    email: "",
+    password: ""
+  })
+
+  const handleChange = (e) => {
+		e.preventDefault()
+
+		setLogUser({
+			...logUser,
+			[e.target.name]: e.target.value
+		})
+
+	}
+
+  const handleSubmit = (e) => {
+		
+		e.preventDefault()
+
+		loginUser(logUser)
+
+	}
+
+
+
+
+
+
 	return (
 		<div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -25,13 +62,16 @@ export default function Login() {
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form 
             className="space-y-6"
+            onSubmit={(e) => { handleSubmit(e) }}
+
           >
             <div>
               <label for="email" className="block text-sm font-medium text-gray-700">
                 Tu correo electrónico
               </label>
               <div className="mt-1">
-                <input 
+                <input
+                onChange={(evt) => { handleChange(evt) }}
                   name="email" 
                   type="email" 
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
@@ -43,7 +83,8 @@ export default function Login() {
                 Tu contraseña
               </label>
               <div className="mt-1">
-                <input 
+                <input
+                onChange={(evt) => { handleChange(evt) }} 
                   name="password" 
                   type="password"
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />

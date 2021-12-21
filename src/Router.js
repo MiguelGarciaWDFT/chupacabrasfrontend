@@ -7,14 +7,17 @@ import Layout from "./components/Layout";
 import Revistas from "./components/Revistas";
 import Single from "./components/Revistas/Single";
 import RevistaState from "./context/Revista/RevistaState";
-
 import CreateRevista from './components/Revistas/Create'
+import UserState from "./context/User/UserState";
+import About from "./components/Layout/About";
+
 
 
 // 2. FUNCIÓN
 const Router = () => {
   return (
     <>
+    <UserState>
       <RevistaState>
         <BrowserRouter>
           <Routes>
@@ -29,16 +32,17 @@ const Router = () => {
 
               <Route path="revistas/crear" element={<CreateRevista/>} />
 
+              <Route path="sobre-nosotros" element={<About/>} />
+
               <Route path="revistas/:id" element={<Single/>} />
 
-              
-
-
-
+            
             </Route>
           </Routes>
         </BrowserRouter>
       </RevistaState>
+
+      </UserState>
     </>
   );
 };
