@@ -8,6 +8,8 @@ import Revistas from "./components/Revistas";
 import Single from "./components/Revistas/Single";
 import RevistaState from "./context/Revista/RevistaState";
 
+import CreateRevista from './components/Revistas/Create'
+
 
 // 2. FUNCIÓN
 const Router = () => {
@@ -25,7 +27,11 @@ const Router = () => {
 
               <Route path="revistas" element={<Revistas/>} />
 
+              <Route path="revistas/crear" element={<CreateRevista/>} />
+
               <Route path="revistas/:id" element={<Single/>} />
+
+              
 
 
 

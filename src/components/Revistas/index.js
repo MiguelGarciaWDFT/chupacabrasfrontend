@@ -1,15 +1,15 @@
 import React, { useEffect, useContext } from "react";
 import RevistaContext from "./../../context/Revista/RevistaContext";
-import {Link} from 'react-router-dom' 
+import { Link } from "react-router-dom";
 export default function Revistas() {
   // ESTADO GLOBAL
   const ctx = useContext(RevistaContext);
 
   const { revistas, hola, changeText, getRevistas } = ctx;
 
-  useEffect(()=>{
+  useEffect(() => {
     getRevistas();
-  },[])
+  }, []);
   //console.log(revistas);
   //console.log(ctx);
 
@@ -17,29 +17,43 @@ export default function Revistas() {
     <>
       <h1>Listado de revistas</h1>
 
-	  <div className="container-cards">
-		  {  
-			  Array.isArray(revistas) && revistas.map((element) => {
-				  return (
-            <div key={element._id} className="card-element">
-              <Link to={`/revistas/${element._id}`}>
-                <div>
-                  <div className="container-title">
-                    <h5>{element.nombre}</h5>
-                  </div>
-                  <img src={element.imagen} height={120} width={85} alt="" />
-                  <div className="footer-info">
-                    <p>{`Visitas: ${element.views}`}</p>
-                    <p>{`Likes: ${element.likes}`}</p>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          );
+      <Link to="/revistas/crear">
+        <button>Crear revista</button>
+      </Link>
 
-			  })
-		  }
-	  </div> 
+
+      <div className="bg-white">
+        <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+          <h2 id="products-heading" className="sr-only">
+            Revistas
+          </h2>
+
+          <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:gap-x-8">
+          
+          {Array.isArray(revistas) &&
+          revistas.map((element) => {
+            return (
+
+
+            <Link to={`/revistas/${element._id}`} className="group">
+              <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3">
+                <img
+                  src={element.imagen}
+                  alt="Textured gray felt pouch for paper cards with snap button flap and elastic pen holder loop."
+                  className="w-full h-full object-center object-cover group-hover:opacity-75"
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
+                <h3>{element.nombre}</h3>
+              
+              </div>
+          
+            </Link>
+            )
+          })}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

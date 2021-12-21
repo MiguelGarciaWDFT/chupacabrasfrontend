@@ -64,6 +64,16 @@ const RevistaState = (props) => {
 		return "Listo"
 
 	}
+
+	const createRevista = async (form) => {
+		
+		try {
+			const res = await axiosClient.post("revistas/create", form)	
+		} catch (error) {
+			console.log(error);
+			
+		}
+	}
 	
 
 	
@@ -77,6 +87,7 @@ const RevistaState = (props) => {
                 changeText,
                 getRevistas,
 				getRevista,
+				createRevista
 			}}
 		>
 			{props.children}
