@@ -50,10 +50,10 @@ const RevistaState = (props) => {
     }
 
 	const getRevista = async (revistaId) => {
-		//console.log(revistaId)
+		console.log(revistaId)
 		const res = await axiosClient.get(`revistas/readone/${revistaId}`)
 
-
+console.log(res);
 		const selectedRevista = res.data.data
 
 		dispatch({
@@ -74,9 +74,15 @@ const RevistaState = (props) => {
 			
 		}
 	}
-	
 
-	
+	const updateRevista = async (form, idRevista) => {
+		const res = await axiosClient.put(`revistas/edit/${idRevista}`, form)
+		const updatedRevista = res.data.data
+		dispatch({
+			type: "UPDATE_REVISTA",
+			payload: updatedRevista
+		})
+	}
 
     return (
 		<RevistaContext.Provider
@@ -87,7 +93,8 @@ const RevistaState = (props) => {
                 changeText,
                 getRevistas,
 				getRevista,
-				createRevista
+				createRevista,
+				updateRevista
 			}}
 		>
 			{props.children}

@@ -3,6 +3,7 @@ const reducer = (globalState, action) => {
 	switch (action.type) {
 
 		case "GET_REVISTA":
+		case "UPDATE_GUITAR":
 			return{
 				...globalState,
 				singleRevista:action.payload

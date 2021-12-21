@@ -19,7 +19,10 @@ export default function Revistas(props) {
       <h1>Listado de revistas</h1>
 
       <Link to="/revistas/crear">
-        <button>Crear revista</button>
+        <button
+        type="button"
+              class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >Crear revista</button>
       </Link>
 
 

@@ -1,35 +1,32 @@
 import React, { useContext, useEffect, useState } from "react";
 import RevistaContext from "./../../../context/Revista/RevistaContext";
-import { ThumbUpIcon} from "@heroicons/react/solid";
-
+import { ThumbUpIcon } from "@heroicons/react/solid";
+import { Link } from 'react-router-dom'
 import { useParams } from "react-router-dom";
 
 const comments = [
   {
     id: 1,
-    name: 'Leslie Alexander',
-    date: '4d ago',
-    imageId: '1494790108377-be9c29b29330',
-    body:
-      'Ducimus quas delectus ad maxime totam doloribus reiciendis ex. Tempore dolorem maiores. Similique voluptatibus tempore non ut.',
+    name: "Leslie Alexander",
+    date: "4d ago",
+    imageId: "1494790108377-be9c29b29330",
+    body: "Ducimus quas delectus ad maxime totam doloribus reiciendis ex. Tempore dolorem maiores. Similique voluptatibus tempore non ut.",
   },
   {
     id: 2,
-    name: 'Michael Foster',
-    date: '4d ago',
-    imageId: '1519244703995-f4e0f30006d5',
-    body:
-      'Et ut autem. Voluptatem eum dolores sint necessitatibus quos. Quis eum qui dolorem accusantium voluptas voluptatem ipsum. Quo facere iusto quia accusamus veniam id explicabo et aut.',
+    name: "Michael Foster",
+    date: "4d ago",
+    imageId: "1519244703995-f4e0f30006d5",
+    body: "Et ut autem. Voluptatem eum dolores sint necessitatibus quos. Quis eum qui dolorem accusantium voluptas voluptatem ipsum. Quo facere iusto quia accusamus veniam id explicabo et aut.",
   },
   {
     id: 3,
-    name: 'Dries Vincent',
-    date: '4d ago',
-    imageId: '1506794778202-cad84cf45f1d',
-    body:
-      'Expedita consequatur sit ea voluptas quo ipsam recusandae. Ab sint et voluptatem repudiandae voluptatem et eveniet. Nihil quas consequatur autem. Perferendis rerum et.',
+    name: "Dries Vincent",
+    date: "4d ago",
+    imageId: "1506794778202-cad84cf45f1d",
+    body: "Expedita consequatur sit ea voluptas quo ipsam recusandae. Ab sint et voluptatem repudiandae voluptatem et eveniet. Nihil quas consequatur autem. Perferendis rerum et.",
   },
-]
+];
 
 export default function Single() {
   const ctx = useContext(RevistaContext);
@@ -49,6 +46,11 @@ export default function Single() {
 
   return (
     <>
+
+
+
+
+
       <h1 className="text-center text-2xl font-extrabold text-gray-900">
         {singleRevista?.nombre}
       </h1>
@@ -70,7 +72,7 @@ export default function Single() {
           />
         </div>
       </div>
-      <br/>
+      <br />
       {/* Seccion de informacion */}
       <div className="grid grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-2 m-15">
         <div className="relative flex p-10">
@@ -181,6 +183,14 @@ export default function Single() {
               </div>
             </div>
           </section> */}
+          <Link to={`/revistas/${id}/editar`}>
+            <button
+              type="button"
+              class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Editar revista
+            </button>
+          </Link>
         </div>
       </div>
     </>
