@@ -7,40 +7,53 @@ import Layout from "./components/Layout";
 import Revistas from "./components/Revistas";
 import Single from "./components/Revistas/Single";
 import RevistaState from "./context/Revista/RevistaState";
-import CreateRevista from './components/Revistas/Create'
+import CreateRevista from "./components/Revistas/Create";
 import UserState from "./context/User/UserState";
 import About from "./components/Layout/About";
-import EditRevista from './components/Revistas/Single/Edit'
+import EditRevista from "./components/Revistas/Single/Edit";
+import Auth from "./routes/Auth";
+import Private from "./routes/Private";
+import { Profile } from "./components/User/Profile";
 
 // 2. FUNCIÓN
 const Router = () => {
   return (
     <>
-    <UserState>
-      <RevistaState>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
+      <UserState>
+        <RevistaState>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
 
-              <Route path="registro" element={<Register/>} />
+                <Route
+                  path="registro"
+                  element={<Auth component={Register} />}
+                />
 
-              <Route path="iniciar-sesion" element={<Login/>} />
+                <Route
+                  path="iniciar-sesion"
+                  element={<Auth component={Login} />}
+                />
 
-              <Route path="revistas" element={<Revistas/>} />
-    
-              <Route path="revistas/crear" element={<CreateRevista/>} />
+                <Route path="revistas" element={<Revistas />} />
 
-              <Route path="sobre-nosotros" element={<About/>} />
+                <Route path="revistas/crear" element={<CreateRevista />} />
 
-              <Route path="revistas/:id" element={<Single/>} />
+                <Route path="sobre-nosotros" element={<About />} />
 
-              <Route path="revistas/:id/editar" element={<EditRevista/>} />
-        
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </RevistaState>
+                <Route path="revistas/:id" element={<Single />} />
+
+                <Route path="revistas/:id/editar" element={<EditRevista />} />
+
+                <Route
+                  path="profile"
+                  element={<Private component={Profile} />}
+                />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </RevistaState>
       </UserState>
     </>
   );

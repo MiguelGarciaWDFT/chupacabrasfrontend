@@ -84,6 +84,10 @@ console.log(res);
 		})
 	}
 
+	const deleteRevista = async (idRevista)=>{
+		const res = await axiosClient.delete(`revistas/delete/${idRevista}`)
+	}
+
     return (
 		<RevistaContext.Provider
 			value={{
@@ -94,7 +98,8 @@ console.log(res);
                 getRevistas,
 				getRevista,
 				createRevista,
-				updateRevista
+				updateRevista,
+				deleteRevista
 			}}
 		>
 			{props.children}

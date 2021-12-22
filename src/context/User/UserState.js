@@ -1,107 +1,101 @@
 // ./src/context/User/UserState.js
-import { useReducer } from 'react'
-import UserReducer from './UserReducer'
-import UserContext from './UserContext'
-import axiosClient from './../../config/axios'
-
+import { useReducer } from "react";
+import UserReducer from "./UserReducer";
+import UserContext from "./UserContext";
+import axiosClient from "./../../config/axios";
 
 const UserState = (props) => {
+  // 1. INITIAL STATE
+  const initialState = {
+    currentUser: {
+      typeUser: "",
+      nombre: "",
+      email: "",
+      password: "",
+    },
+    authStatus: false,
+  };
 
-	// 1. INITIAL STATE
-	const initialState = {
-		currentUser: {
-            "typeUser":"",
-            "nombre":"",
-            "email":"",
-            "password":""
-		},
-		authStatus: false
-	}
+  // 2. CONFIGURACIÓN DEL REDUCER
+  const [globalState, dispatch] = useReducer(UserReducer, initialState);
 
-	// 2. CONFIGURACIÓN DEL REDUCER
-	const [globalState, dispatch] = useReducer(UserReducer, initialState)
+  // 3. FUNCIONES
+  const registerUser = async (form) => {
+    const res = await axiosClient.post("users/create", form);
 
+    console.log(res);
 
-	// 3. FUNCIONES
-	const registerUser = async (form) => {
+    const token = res.data.data;
 
-		const res = await axiosClient.post("users/create", form)
-		
-		console.log(res)
+    dispatch({
+      type: "REGISTRO_EXITOSO",
+      payload: token,
+    });
+  };
 
-		const token = res.data.data
+  const verifyingToken = async () => {
+    const token = localStorage.getItem("token");
 
-		dispatch({
-			type: "REGISTRO_EXITOSO",
-			payload: token
-		})
-	}
+    // ANEXAR TOKEN A LA SIGUIENTE PETICIÓN DE AXIOS
+    if (token) {
+      axiosClient.defaults.headers.common["x-auth-token"] = token;
+    } else {
+      delete axiosClient.defaults.headers.common["x-auth-token"];
+    }
 
-	const loginUser = async (form) => {
+    try {
+      const res = await axiosClient.get("users/verifytoken");
 
-		console.log(form)
+      console.log(res);
 
-		const res = await axiosClient.post("users/login", form)
+      const userData = res.data.data;
 
-		console.log(res)
+      dispatch({
+        type: "GET_DATA_USER",
+        payload: userData,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-		const token = res.data.data
+  const loginUser = async (form) => {
+    try {
+      console.log(form);
 
-		dispatch({
-			type: "LOGIN_EXITOSO",
-			payload: token
-		})
+      const res = await axiosClient.post("users/login", form);
 
-	}
+      console.log(res);
 
-	const verifyingToken = async () => {
+      const token = res.data.data;
 
-		const token = localStorage.getItem("token")
+      dispatch({
+        type: "LOGIN_EXITOSO",
+        payload: token,
+      });
+    } catch (error) {}
+  };
 
-		// ANEXAR TOKEN A LA SIGUIENTE PETICIÓN DE AXIOS
-		if(token) {
-			axiosClient.defaults.headers.common["x-auth-token"] = token
-		} else {
-			delete axiosClient.defaults.headers.common["x-auth-token"]
-		}
+  const logoutUser = async () => {
+    dispatch({
+      type: "LOGOUT_USUARIO",
+    });
+  };
 
-		try {
-			
-			const res = await axiosClient.get("users/verifytoken")
-
-			console.log(res)
-
-			const userData = res.data.data
-
-			dispatch({
-				type: "GET_DATA_USER",
-				payload: userData
-			})
-
-		} catch (error) {
-			console.log(error)
-		}
-
-
-	}
-
-	// 4. RETORNO
-	return (
-		<UserContext.Provider
-			value={{
-				currentUser: globalState.currentUser,
-				authStatus: globalState.authStatus,
-				registerUser,
-				loginUser,
-				verifyingToken
-			}}
-		>
-
-			{props.children}
-
-		</UserContext.Provider>
-
-	)
-
-}
-export default UserState
+  // 4. RETORNO
+  return (
+    <UserContext.Provider
+      value={{
+        currentUser: globalState.currentUser,
+        authStatus: globalState.authStatus,
+        registerUser,
+        loginUser,
+        verifyingToken,
+        logoutUser,
+      }}
+    >
+      {props.children}
+    </UserContext.Provider>
+  );
+};
+export default UserState;

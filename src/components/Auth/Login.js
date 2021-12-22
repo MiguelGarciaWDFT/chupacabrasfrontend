@@ -1,15 +1,14 @@
-// ./client/src/Auth/Login.js
 import React, {useState, useContext} from 'react'
 import { Link } from 'react-router-dom'
 import UserContext from '../../context/User/UserContext'
-
 
 export default function Login() {
 
   const ctx = useContext(UserContext)
 
   const {
-    loginUser
+    loginUser,
+    verifyingToken
   } = ctx
 
   // 1. ESTADO LOCAL
@@ -28,18 +27,18 @@ export default function Login() {
 
 	}
 
-  const handleSubmit = (e) => {
-		
-		e.preventDefault()
+  const handleSubmit = async (e) => {
+		try {
+      e.preventDefault()
 
-		loginUser(logUser)
+		await loginUser(logUser)
+    await verifyingToken();
+      
+    } catch (error) {
+      
+    }
 
 	}
-
-
-
-
-
 
 	return (
 		<div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8">

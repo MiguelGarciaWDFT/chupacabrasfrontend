@@ -1,30 +1,22 @@
 /* This example requires Tailwind CSS v2.0+ */
-import React, {useContext} from 'react'
-import UserContext from '../context/User/UserContext'
-
+import React, { useContext } from "react";
+import UserContext from "../context/User/UserContext";
 
 export default function Home() {
+  const ctx = useContext(UserContext);
 
+  const { verifyingToken } = ctx;
 
-  const ctx = useContext(UserContext)
-
-	const {
-		verifyingToken
-	} = ctx
-
-    return (
-
-      <div>
-			Este es el Home
-			<button onClick={() => {
-				verifyingToken()
-			}}>
-				Verificar sesión
-			</button>
-
-		</div>
-
-
-      
-    )
-  }
+  return (
+    <div>
+      Este es el Home
+      <button
+        onClick={() => {
+          verifyingToken();
+        }}
+      >
+        Verificar sesión
+      </button>
+    </div>
+  );
+}

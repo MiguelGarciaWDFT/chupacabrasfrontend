@@ -1,29 +1,34 @@
 const reducer = (globalState, action) => {
+  switch (action.type) {
+    case "REGISTRO_EXITOSO":
+    case "LOGIN_EXITOSO":
+      localStorage.setItem("token", action.payload);
 
+      return {
+        ...globalState,
+        authStatus: true,
+      };
 
-	switch (action.type) {
+    case "LOGOUT_USUARIO":
+      localStorage.removeItem("token");
 
-		case "REGISTRO_EXITOSO":
-		case "LOGIN_EXITOSO":
-			localStorage.setItem("token", action.payload)
+      return {
+        ...globalState,
+        currentUser: { typeUser: "", nombre: "", email: "", password: "" },
+        authStatus: false,
+        msg: action.payload,
+      };
 
-			return {
-				...globalState,
-				authStatus: true
-			}
+    case "GET_DATA_USER":
+      return {
+        ...globalState,
+        authStatus: true,
+        currentUser: action.payload,
+      };
 
+    default:
+      return globalState;
+  }
+};
 
-		case "GET_DATA_USER":
-			return {
-				...globalState,
-				authStatus: true,
-				currentUser: action.payload
-			}
-
-		default: 
-			return globalState
-
-	}
-}
-
-export default reducer
+export default reducer;

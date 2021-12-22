@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import RevistaContext from "./../../../context/Revista/RevistaContext";
 import { ThumbUpIcon } from "@heroicons/react/solid";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const comments = [
@@ -31,7 +31,7 @@ const comments = [
 export default function Single() {
   const ctx = useContext(RevistaContext);
 
-  const { singleRevista, getRevista } = ctx;
+  const { singleRevista, getRevista, deleteRevista } = ctx;
   const [like, setLike] = useState(0);
 
   const params = useParams();
@@ -46,11 +46,6 @@ export default function Single() {
 
   return (
     <>
-
-
-
-
-
       <h1 className="text-center text-2xl font-extrabold text-gray-900">
         {singleRevista?.nombre}
       </h1>
@@ -186,9 +181,19 @@ export default function Single() {
           <Link to={`/revistas/${id}/editar`}>
             <button
               type="button"
-              class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Editar revista
+            </button>
+          </Link>
+
+          <Link to={`/revistas`}>
+            <button
+              onClick={() => deleteRevista(id)}
+              type="button"
+              className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Borrar revista
             </button>
           </Link>
         </div>

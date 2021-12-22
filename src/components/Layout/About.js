@@ -1,15 +1,14 @@
-/* This example requires Tailwind CSS v2.0+ */
 const people = [
   {
-    name: "Casco",
+    name: "Saul",
     role: "Creador de contenido",
     imageUrl: "https://static.grainger.com/rp/s/is/image/Grainger/4LKM2_AS01",
     twitterUrl: "#",
     linkedinUrl: "#",
   },
   {
-    name: "Miguel",
-    role: "Desarrollador",
+    name: "Miguel García",
+    role: "Desarrollador Web",
     imageUrl:
       "https://media-exp1.licdn.com/dms/image/C4E03AQGiF7_UPqjW6A/profile-displayphoto-shrink_400_400/0/1634940721036?e=1645660800&v=beta&t=HcMeFPIX-XyBsV8OfvSggkf7vgrephZVT-sJOxNYa-Q",
     twitterUrl: "https://twitter.com/Guns_N_Dev",
@@ -26,11 +25,11 @@ export default function About() {
         <div className="space-y-12">
           <div className="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Meet our team
+              Conoce a nuestro equipo
             </h2>
             <p className="text-xl text-gray-500">
-              Ornare sagittis, suspendisse in hendrerit quis. Sed dui aliquet
-              lectus sit pretium egestas vel mattis neque.
+              Chupacabras Fanzine es un proyecto independiente que crece con el
+              paso de los años, queremos saber de tí asi que contáctanos.
             </p>
           </div>
           <ul className="flex justify-around flex-wrap">
