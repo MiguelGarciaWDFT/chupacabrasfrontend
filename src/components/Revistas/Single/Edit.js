@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import RevistaContext from "../../../context/Revista/RevistaContext";
 
 export default function Edit() {
@@ -7,6 +7,7 @@ export default function Edit() {
   const params = useParams();
   const idRevista = params.id;
   const ctx = useContext(RevistaContext);
+  const navigate = useNavigate()
 
   const { singleRevista, getRevista, updateRevista } = ctx;
 
@@ -50,6 +51,7 @@ export default function Edit() {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateRevista(revistaData, idRevista);
+    navigate(`/revistas/${idRevista}`)
   };
 
   return (

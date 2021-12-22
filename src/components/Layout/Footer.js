@@ -2,9 +2,8 @@ import React from 'react'
 
 export default function Footer() {
 	return (
-	<div class="h-10 bg-blue-500">
       <footer className="bg-white">
-        <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-8">
         
           <div className="mt-8 flex justify-center space-x-6">
             <a href="#" className="text-gray-400 hover:text-gray-500">
@@ -37,6 +36,5 @@ export default function Footer() {
           </p>
         </div>
       </footer>
-    </div>
 	)
 }
