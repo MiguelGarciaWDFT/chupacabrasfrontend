@@ -11,7 +11,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header style={{backgroundColor:'red'}}>
+    <header style={{ backgroundColor: "red" }}>
       <nav className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-8" aria-label="Top">
         <div className="w-full py-6 flex items-center justify-between border-b border-indigo-500 lg:border-none">
           <div className="flex items-center">
@@ -40,14 +40,16 @@ export default function Header() {
                   </Link>
                 </>
               )}
-              {currentUser.typeUser === "adminchief" && <Link to="/revistas/crear">
-                <button
-                  type="button"
-                  className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Crear revista
-                </button>
-              </Link>}
+              {currentUser.typeUser === "adminchief" && (
+                <Link to="/revistas/crear">
+                  <button
+                    type="button"
+                    className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Crear revista
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
 
