@@ -36,15 +36,16 @@ const Router = () => {
                   element={<Auth component={Login} />}
                 />
 
-                <Route path="revistas" element={<Revistas />} />
+                <Route path="revistas" element={<Private component={Revistas} />} 
+                />
 
-                <Route path="revistas/crear" element={<CreateRevista />} />
+                <Route path="revistas/crear" element={<Private component={CreateRevista} />} />
 
-                <Route path="sobre-nosotros" element={<About />} />
+                <Route path="sobre-nosotros" element={<Private component={About} />} />
 
-                <Route path="revistas/:id" element={<Single />} />
+                <Route path="revistas/:id" element={<Private component={Single} />} />
 
-                <Route path="revistas/:id/editar" element={<EditRevista />} />
+                <Route path="revistas/:id/editar" element={<Private component={EditRevista} />} />
 
                 <Route
                   path="profile"

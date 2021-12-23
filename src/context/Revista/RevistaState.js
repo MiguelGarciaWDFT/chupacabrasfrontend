@@ -34,36 +34,34 @@ const RevistaState = (props) => {
 		})
 	}
 
-    const getRevistas= async ()=>{
-
-        const res = await axiosClient.get("revistas/readall")
+    const getRevistas = async () => {
+      try {
+        const res = await axiosClient.get("revistas/readall");
 
         console.log("obteniendo revitas");
 
-        const list = res.data.data
+        const list = res.data.data;
 
-       dispatch({
-           type:"GET_REVISTAS",
-           payload:list
-       })
-       console.log(list)
-    }
+        dispatch({
+          type: "GET_REVISTAS",
+          payload: list,
+        });
+      } catch (error) {}
+    };
 
 	const getRevista = async (revistaId) => {
-		console.log(revistaId)
-		const res = await axiosClient.get(`revistas/readone/${revistaId}`)
+    try {
+      const res = await axiosClient.get(`revistas/readone/${revistaId}`);
+      const selectedRevista = res.data.data;
 
-console.log(res);
-		const selectedRevista = res.data.data
+      dispatch({
+        type: "GET_REVISTA",
+        payload: selectedRevista,
+      });
 
-		dispatch({
-			type: "GET_REVISTA",
-			payload: selectedRevista
-		})
-
-		return "Listo"
-
-	}
+      return selectedRevista;
+    } catch (error) {}
+  };
 
 	const createRevista = async (form) => {
 		

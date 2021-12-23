@@ -10,7 +10,7 @@ export default function Layout() {
       <div className="flex flex-col h-screen justify-between">
         <Header />
 
-        <main style={{ backgroundColor: "red" }} className="mb-auto">
+        <main style={{ backgroundColor: "white" }} className="mb-auto">
           <Outlet />
         </main>
 

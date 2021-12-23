@@ -48,9 +48,9 @@ export default function Edit() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    updateRevista(revistaData, idRevista);
+    await updateRevista(revistaData, idRevista);
     navigate(`/revistas/${idRevista}`)
   };
 
@@ -77,7 +77,7 @@ export default function Edit() {
                 for="nombre"
                 className="block text-sm font-medium text-gray-700"
               >
-                Nombre de la revista/comentario
+                Nombre de la revista.
               </label>
               <input
                 onChange={(event) => {
@@ -95,7 +95,7 @@ export default function Edit() {
                 for="imagen"
                 className="block text-sm font-medium text-gray-700"
               >
-                Imagen o portada de tu revista.
+                Link de la portada o imagen de la revista.
               </label>
               <input
                 onChange={(event) => {
@@ -114,8 +114,8 @@ export default function Edit() {
                   for="urlPdf"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Url de tu revista, puedes compartir un enlace público desde
-                  GoogleDrive como nosotros /,,/.
+                  Url de la revista, puedes compartir un enlace público desde
+                  GoogleDrive.
                 </label>
                 <input
                   onChange={(event) => {
@@ -133,7 +133,7 @@ export default function Edit() {
                   for="edicion"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  edicion de la revista/comentario
+                  Edición de la revista
                 </label>
                 <input
                   onChange={(event) => {
@@ -151,7 +151,7 @@ export default function Edit() {
                   for="descripcion"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Descripcion de tu contenido
+                  Breve descripción del contenido.
                 </label>
                 <textarea
                   onChange={(event) => {
@@ -169,10 +169,11 @@ export default function Edit() {
           </div>
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button
+            style={{backgroundColor: '#a10101'}}
               type="submit"
               className="bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Guardar revista
+              Actualizar revista.
             </button>
           </div>
         </div>

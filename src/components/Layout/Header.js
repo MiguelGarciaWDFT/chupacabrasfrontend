@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../context/User/UserContext";
+
 export default function Header() {
   const ctx = useContext(UserContext);
 
@@ -11,7 +12,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header style={{ backgroundColor: "red" }}>
+    <header style={{ backgroundColor: "black" }}>
       <nav className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-8" aria-label="Top">
         <div className="w-full py-6 flex items-center justify-between border-b border-indigo-500 lg:border-none">
           <div className="flex items-center">
@@ -43,8 +44,9 @@ export default function Header() {
               {currentUser.typeUser === "adminchief" && (
                 <Link to="/revistas/crear">
                   <button
+                  style={{backgroundColor: '#a10101'}}
                     type="button"
-                    className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white"
                   >
                     Crear revista
                   </button>
@@ -56,32 +58,29 @@ export default function Header() {
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             {currentUser.email !== "" ? (
               <>
-                <Link
-                  to="/profile"
-                  className="text-base font-medium text-white hover:text-indigo-50"
-                >
-                  Tu perfil
-                </Link>
+                <p className="text-base font-medium text-white hover:text-indigo-50 mr-5">Te damos la bienvenida a Chupacabras Fanzine {currentUser.nombre}</p>
+
 
                 <Link
+                style={{backgroundColor: '#a10101'}}
                   onClick={() => logoutUser()}
                   to="/"
-                  className="text-base font-medium text-white hover:text-indigo-50"
+                  className="bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Cerrar sesión
                 </Link>
               </>
             ) : (
               <>
-                <Link
+                <Link style={{backgroundColor: '#a10101'}}
                   to="/registro"
-                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700"
+                  className ="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white"
                 >
                   Crear cuenta
                 </Link>
-                <Link
+                <Link style={{backgroundColor: '#a10101'}}
                   to="/iniciar-sesion"
-                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700"
+                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white"
                 >
                   Iniciar sesión
                 </Link>

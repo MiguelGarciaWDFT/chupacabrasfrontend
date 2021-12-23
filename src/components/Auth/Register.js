@@ -31,7 +31,7 @@ export default function Register() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <img
           className="mx-auto h-12 w-auto"
-          src="https://cdn.worldvectorlogo.com/logos/ironhack-1.svg"
+          src="https://res.cloudinary.com/cloudguns/image/upload/v1640051790/chupacabrasimages/PORTADAS%20SELECCIONADAS/chupacabrasprime_ciwfkw.png"
         />
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Crea tu cuenta
@@ -39,7 +39,7 @@ export default function Register() {
         <p className="mt-2 text-center text-sm text-gray-600">
           ¿Ya tienes cuenta? &nbsp;
           <Link to="/iniciar-sesion">
-            <a className="font-medium text-yellow-500 hover:text-yellow-300">
+            <a className="font-medium text-black hover:text-red-600">
               Inicia sesión.
             </a>
           </Link>
@@ -59,7 +59,7 @@ export default function Register() {
                 for="password"
                 className="block text-sm font-medium text-gray-700"
               >
-                Tu nombre completo
+                Nombre de usuario
               </label>
               <div className="mt-1">
                 <input
@@ -78,7 +78,7 @@ export default function Register() {
                 for="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Tu correo electrónico
+                Correo electrónico
               </label>
               <div className="mt-1">
                 <input
@@ -97,7 +97,7 @@ export default function Register() {
                 for="password"
                 className="block text-sm font-medium text-gray-700"
               >
-                Tu contraseña
+                Contraseña
               </label>
               <div className="mt-1">
                 <input
@@ -117,7 +117,7 @@ export default function Register() {
                 for="password"
                 className="block text-sm font-medium text-gray-700"
               >
-                Confirma tu contraseña
+                Confirmar contraseña
               </label>
               <div className="mt-1">
                 <input
@@ -134,6 +134,7 @@ export default function Register() {
 
             <div>
               <button
+              style={{backgroundColor: '#a10101'}}
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >

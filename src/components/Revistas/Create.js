@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-
+import { useNavigate } from "react-router-dom"
 import RevistaContext from "./../../context/Revista/RevistaContext";
 
 export default function Create() {
@@ -7,6 +7,7 @@ export default function Create() {
 
   const ctx = useContext(RevistaContext);
   const { createRevista } = ctx;
+  const navigate =useNavigate()
 
   // 2. ESTADO LOCAL
   const [newRevista, setNewRevista] = useState({
@@ -30,7 +31,10 @@ export default function Create() {
   const handleSubmit = (e) => {
     e.preventDefault();
     createRevista(newRevista);
+    navigate(`/revistas`)
   };
+
+
 
   return (
     <>
@@ -108,7 +112,7 @@ export default function Create() {
                   for="edicion"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  edicion de la revista/comentario
+                  Edición / Año de publicación
                 </label>
                 <input
                   onChange={(event) => {
@@ -142,6 +146,7 @@ export default function Create() {
           </div>
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button
+            style={{backgroundColor: '#a10101'}}
               type="submit"
               className="bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >

@@ -1,49 +1,55 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React, { useContext } from "react";
 import UserContext from "../context/User/UserContext";
+import { ExternalLinkIcon } from "@heroicons/react/solid";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const ctx = useContext(UserContext);
+  const {currentUser}=ctx
 
-  const { verifyingToken } = ctx;
+ 
 
   return (
     <>
-      {/*
-          This example requires updating your template:
-  
-          
-          <html class="h-full">
-          <body class="h-full">
-          
-        */}
-      <main
-        className="min-h-full bg-cover bg-top sm:bg-top"
-        style={{
-          backgroundImage:
-            'url("https://images.unsplash.com/photo-1545972154-9bb223aac798?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3050&q=80&exp=8&con=-15&sat=-75")',
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48">
-          <p className="text-sm font-semibold text-black text-opacity-50 uppercase tracking-wide">
-            404 error
-          </p>
-          <h1 className="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">
-            Uh oh! I think you’re lost.
-          </h1>
-          <p className="mt-2 text-lg font-medium text-black text-opacity-50">
-            It looks like the page you’re looking for doesn't exist.
-          </p>
-          <div className="mt-6">
-            <a
-              href="#"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-black text-opacity-75 bg-white bg-opacity-75 sm:bg-opacity-25 sm:hover:bg-opacity-50"
-            >
-              Go back home
-            </a>
+      <div className="relative bg-black">
+        <div className="relative h-56 bg-indigo-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+          <img
+            className="w-full h-full object-cover"
+            src="https://res.cloudinary.com/cloudguns/image/upload/v1640198732/chupacabrasimages/PORTADAS%20SELECCIONADAS/home_b9nnob.png"
+            alt="bg-principal"
+          />
+        </div>
+        <div className="relative mx-auto max-w-md px-4 py-12 sm:max-w-7xl sm:px-6 sm:py-20 md:py-28 lg:px-8 lg:py-32">
+          <div className="md:ml-auto md:w-1/2 md:pl-10">
+            <h2 className="text-base font-semibold uppercase tracking-wider text-gray-300">
+              Bienvenidos a
+            </h2>
+            <p className="mt-2 text-white text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Chupacabras Fanzine
+            </p>
+            <p className="mt-3 text-lg text-gray-300">Desde su nacimiento en 2018 y hasta la fecha este espacio independiente se a caracterizado por la contribución de artistas de todas partes de México y del mundo, si gustas colaborar o difundir tu contenido añadenos en redes sociales.  </p>
+
+            <div className="mt-8">
+              <div className="inline-flex rounded-md shadow">
+                {currentUser.email === "" && (
+                  <Link
+                    style={{ backgroundColor: "#a10101" }}
+                    to="/registro"
+                    className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white hover:bg-gray-50"
+                  >
+                    Crea una cuenta con nosotros
+                    <ExternalLinkIcon
+                      className="-mr-1 ml-3 h-5 w-5 text-white"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }
