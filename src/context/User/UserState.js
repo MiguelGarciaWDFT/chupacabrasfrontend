@@ -23,7 +23,7 @@ const UserState = (props) => {
   const registerUser = async (form) => {
     const res = await axiosClient.post("users/create", form);
 
-    console.log(res);
+  
 
     const token = res.data.data;
 
@@ -46,7 +46,7 @@ const UserState = (props) => {
     try {
       const res = await axiosClient.get("users/verifytoken");
 
-      console.log(res);
+   
 
       const userData = res.data.data;
 
@@ -61,11 +61,8 @@ const UserState = (props) => {
 
   const loginUser = async (form) => {
     try {
-      console.log(form);
 
       const res = await axiosClient.post("users/login", form);
-
-      console.log(res);
 
       const token = res.data.data;
 
