@@ -40,7 +40,7 @@ export default function Footer() {
 
         </div>
         <p className="mt-8 text-center text-base text-gray-400">
-          &copy; 2021. Todos los derechos reservados.
+          &copy; 2022. Todos los derechos reservados.
         </p>
         <p className="text-center text-base text-gray-400">
           Chupacabras fanzine es un espacio libre para que los artistas puedan
