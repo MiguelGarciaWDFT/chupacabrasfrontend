@@ -16,7 +16,7 @@ export default function Home() {
         <div className="relative h-56 bg-indigo-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
           <img
             className="w-full h-full object-cover"
-            src="https://res.cloudinary.com/cloudguns/image/upload/v1640198732/chupacabrasimages/PORTADAS%20SELECCIONADAS/home_b9nnob.png"
+            src="https://res.cloudinary.com/cloudguns/image/upload/v1645505839/chupacabrasimages/PORTADAS%20SELECCIONADAS/Chupacabras_1_ha3mo7.jpg"
             alt="bg-principal"
           />
         </div>
